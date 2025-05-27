@@ -70,26 +70,26 @@ export default function Home() {
   };
 
   return (
-    <main className="container mx-auto px-4 py-8 max-w-3xl">
-      <h1 className="text-3xl font-bold mb-8 text-center">Todo Application</h1>
+    <main className="container mx-auto px-4 py-8 max-w-3xl bg-background text-foreground">
+      <h1 className="text-3xl font-bold mb-8 text-center text-foreground">Todo Application</h1>
       
       <TodoForm onSubmit={handleAddTodo} />
       
       {error && (
-        <div className="p-4 mb-4 text-red-700 bg-red-100 rounded-lg">
+        <div className="p-4 mb-4 text-red-700 bg-red-100 rounded-lg dark:bg-red-900 dark:text-red-200">
           {error}
         </div>
       )}
       
       {isLoading ? (
-        <div className="text-center py-4">Loading todos...</div>
+        <div className="text-center py-4 text-foreground">Loading todos...</div>
       ) : todos.length === 0 ? (
-        <div className="text-center py-4 text-gray-500">
+        <div className="text-center py-4 text-gray-500 dark:text-gray-400">
           No todos yet. Add a new one to get started!
         </div>
       ) : (
         <div>
-          <h2 className="text-xl font-semibold mb-4">Your Todos</h2>
+          <h2 className="text-xl font-semibold mb-4 text-foreground">Your Todos</h2>
           {todos.map((todo) => (
             <TodoItem
               key={todo.id}
