@@ -15,6 +15,15 @@ export const appRouter = router({
         orderBy: { createdAt: 'desc' },
       });
     }),
+    
+    // Get a todo by id
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ ctx, input }) => {
+        return await ctx.prisma.todo.findUnique({
+          where: { id: input.id },
+        });
+      }),
   }),
 });
 
