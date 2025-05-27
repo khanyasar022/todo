@@ -41,6 +41,24 @@ export const appRouter = router({
           },
         });
       }),
+      
+    // Update a todo
+    update: publicProcedure
+      .input(
+        z.object({
+          id: z.number(),
+          title: z.string().min(1).optional(),
+          description: z.string().optional(),
+          completed: z.boolean().optional(),
+        })
+      )
+      .mutation(async ({ ctx, input }) => {
+        const { id, ...data } = input;
+        return await ctx.prisma.todo.update({
+          where: { id },
+          data,
+        });
+      }),
   }),
 });
 
