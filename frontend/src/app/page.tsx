@@ -4,13 +4,7 @@ import { useEffect, useState } from 'react';
 import { TodoItem } from '../components/TodoItem';
 import { TodoForm } from '../components/TodoForm';
 import { trpc } from '../utils/trpc';
-
-interface Todo {
-  id: number;
-  title: string;
-  description?: string;
-  completed: boolean;
-}
+import { Todo } from '../types';
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);

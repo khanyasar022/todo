@@ -1,9 +1,4 @@
-interface Todo {
-  id: number;
-  title: string;
-  description?: string;
-  completed: boolean;
-}
+import { Todo } from "../types"; // Import the shared Todo type
 
 interface TodoItemProps {
   todo: Todo;
