@@ -24,6 +24,23 @@ export const appRouter = router({
           where: { id: input.id },
         });
       }),
+      
+    // Create a new todo
+    create: publicProcedure
+      .input(
+        z.object({
+          title: z.string().min(1),
+          description: z.string().optional(),
+        })
+      )
+      .mutation(async ({ ctx, input }) => {
+        return await ctx.prisma.todo.create({
+          data: {
+            title: input.title,
+            description: input.description,
+          },
+        });
+      }),
   }),
 });
 
