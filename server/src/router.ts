@@ -59,6 +59,15 @@ export const appRouter = router({
           data,
         });
       }),
+      
+    // Delete a todo
+    delete: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ ctx, input }) => {
+        return await ctx.prisma.todo.delete({
+          where: { id: input.id },
+        });
+      }),
   }),
 });
 
